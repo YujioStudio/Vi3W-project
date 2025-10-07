@@ -1,141 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="6siqvGYHNeiWNod0v65JpyicZxVLY7OTS527kqpeQlA" />
-<title>VI3W PROJECT</title>
-<meta name="description" content="VI3W PROJECT">
-<style>
-    body {
-        margin: 0;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        background-color: rgb(81, 97, 126);
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="6siqvGYHNeiWNod0v65JpyicZxVLY7OTS527kqpeQlA" />
 
-    header {
-        text-align: center;
-        margin-top: 20px;
-    }
+    
+    <title>VI3W PROJECT | โปรเจกต์รีวิวและแนะนำคาเฟ่โดย Yujio Studio</title>
+    <meta name="description" content="VI3W PROJECT รวมรีวิว คาเฟ่ ร้านอาหาร และสถานที่น่าสนใจรอบมหาวิทยาลัยศิลปากร เพชรบุรี.">
+    <meta name="keywords" content="VI3W PROJECT,รีวิวคาเฟ่, รีวิวร้านอาหาร, คาเฟ่ศิลปากร, เพชรบุรี, รีวิวมหาวิทยาลัยศิลปากร, Cafe Review, Travel Project, VI3W">
+    <meta name="author" content="Yujio Studio">
 
-    header img {
-        width: 60%;
-        height: auto;
-    }
+    <meta property="og:title" content="VI3W PROJECT | โปรเจกต์รีวิวและแนะนำคาเฟ่">
+    <meta property="og:description" content="ค้นพบคาเฟ่และร้านอาหารสุดชิลรอบมหาวิทยาลัยศิลปากรกับ VI3W PROJECT ">
+    <meta property="og:image" content="https://yujiostudio.github.io/Vi3W-project/Logo_color.png">
+    <meta property="og:url" content="https://yujiostudio.github.io/Vi3W-project/">
+    <meta property="og:type" content="website">
 
-    main {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(81, 97, 126);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    .Wallpaper {
-        background-color: aliceblue;
-        width: 500px;
-        min-height: 800px; /* ให้ขยายตามเนื้อหา */
-        padding: 30px; /* เว้นขอบใน */
-        border: 2px solid #000;
-        box-sizing: border-box;
-        border-radius: 10px;
-        display: block; /* เปลี่ยนจาก flex เป็น block */
-        overflow: hidden; /* กันเนื้อหาล้น */
-    }
+        header {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-    .Wallpaper h1 {
-        margin-top: 0;
-        font-size: 28px;
-        text-align: center; /* ให้หัวข้ออยู่กลาง */
-    }
+        header img {
+            width: 60%;
+            height: auto;
+        }
 
-    .Wallpaper p {
-        font-size: 16px;
-        line-height: 1.5;
-        text-align: left; /* ให้เนื้อหาทั่วไปชิดซ้าย */
-    }
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .Wallpaper img {
-        width: 100%;
-        border-radius: 8px;
-        margin-top: 15px;
-    }
+        .Wallpaper {
+            background-color: aliceblue;
+            width: 500px;
+            min-height: 800px;
+            padding: 30px;
+            border: 2px solid #000;
+            box-sizing: border-box;
+            border-radius: 10px;
+            display: block;
+            overflow: hidden;
+        }
 
-    footer {
-        color: rgba(95, 217, 213, 0.8);
-        background-color: rgb(159, 162, 135);
-        padding: 1rem 0;
-        text-align: center;
-    }
+        .Wallpaper h1 {
+            margin-top: 0;
+            font-size: 28px;
+            text-align: center;
+        }
 
-    footer p {
-        margin: 0.5rem 0;
-    }
+        .Wallpaper p {
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: left;
+        }
 
-    .footer-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        margin-top: 10px;
-    }
+        .Wallpaper img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
 
-    .footer-logo a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-    }
+        footer {
+            color: rgba(95, 217, 213, 0.8);
+            background-color: rgb(159, 162, 135);
+            padding: 1rem 0;
+            text-align: center;
+        }
 
-    .footer-logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        vertical-align: middle;
-    }
+        footer p {
+            margin: 0.5rem 0;
+        }
 
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-</style>
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .footer-logo a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
-    <img src="Logo_color.png" alt="logo">
+    <img src="Logo_color.png" alt="VI3W PROJECT logo">
 </header>
 
 <main>
     <div class="Wallpaper">
-        <h1>แนะนำคาเฟ่และร้านอาหารหลังม.ศิลปากร เพชรบุรี</h1>
+        <h1>VI3W PROJECT</h1>
+        <p style="text-align:center; font-style: italic; color: gray;">
+            โปรเจกต์รีวิวสถานที่โดย Yujio Studio  
+            แนะนำคาเฟ่และร้านอาหารรอบมหาวิทยาลัยศิลปากร เพชรบุรี
+        </p>
+
+        <h2>แนะนำคาเฟ่และร้านอาหารหลังม.ศิลปากร เพชรบุรี</h2>
         <p>
-            ในย่านหลังมหาวิทยาลัยศิลปากร วิทยาเขตเพชรบุรี มีคาเฟ่และร้านอาหารน่านั่งหลายแห่ง
-            ไม่ว่าจะเป็นร้านกาแฟสุดชิล ร้านอาหารไทยฟิวชัน หรือร้านขนมเล็กๆ ที่ซ่อนความอร่อยไว้
+            ในย่านหลังมหาวิทยาลัยศิลปากร วิทยาเขตเพชรบุรี มีคาเฟ่และร้านอาหารน่านั่งหลายแห่ง  
+            ไม่ว่าจะเป็นร้านกาแฟสุดชิล ร้านอาหารไทยฟิวชัน หรือร้านขนมเล็กๆ ที่ซ่อนความอร่อยไว้  
             วันนี้ VI3W PROJECT จะพาไปชมกัน!
         </p>
+
         <img src="IMG_20251005_141400.jpg" alt="รูปคาเฟ่ตัวอย่าง">
-        <p>
-            📍 ตัวอย่างร้าน: Better Corner Cafe 
-            
-        </p>
-        <p>
-            ☕ เมนูแนะนำ: ไข่ข้นกุ้ง,ชาเลม่อน,บราวนี่
-        </p>
-        <p>
-            🕒 เปิดทุกวัน 9:30 - 21:00
-        </p>
+
+        <p><strong>📍 ตัวอย่างร้าน:</strong> Better Corner Cafe</p>
+        <p><strong>☕ เมนูแนะนำ:</strong> ไข่ข้นกุ้ง, ชาเลม่อน, บราวนี่</p>
+        <p><strong>🕒 เวลาเปิด:</strong> ทุกวัน 9:30 - 21:00</p>
+
         <div class="footer-logo">
             <a href="https://www.instagram.com/bettercornercafe_inmyhouse/">
                 <img src="Instagram Logo.png" alt="Instagram Logo">
             </a>
             <a href="https://www.facebook.com/p/Better-corner-cafe-in-my-house-100063505355076/?locale=th_TH">
                 <img src="Facebook_f_logo_(2019).svg.png" alt="Facebook Logo">
+            </a>
         </div>
-        
     </div>
 </main>
 
