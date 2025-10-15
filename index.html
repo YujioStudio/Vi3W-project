@@ -8,7 +8,7 @@
   <meta name="description" content="VI3W PROJECT รวมรีวิว คาเฟ่ ร้านอาหาร และสถานที่น่าสนใจรอบมหาวิทยาลัยศิลปากร เพชรบุรี.">
   <meta name="author" content="Yujio Studio" />
 
-  <style>  
+  <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -18,23 +18,17 @@
       transition: background-color 0.6s ease;
     }
 
-    /* ===== Intro Cover ===== */
+    /* ===== Intro ===== */
     #intro {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100vh;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
       background-color: rgb(66, 136, 139);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; z-index: 1000;
-      transition: all 0.8s ease;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; z-index: 1000; transition: all 0.8s ease;
     }
     #intro img { width: 60%; max-width: 400px; margin-bottom: 40px; transition: all 0.8s ease; }
     #intro button {
-      background-color: #84533d;
-      color: #c9b8a8;
-      border: none; padding: 12px 28px;
-      font-size: 18px; border-radius: 10px;
-      font-weight: bold; cursor: pointer;
+      background-color: #84533d; color: #c9b8a8; border: none; padding: 12px 28px;
+      font-size: 18px; border-radius: 10px; font-weight: bold; cursor: pointer;
       transition: all 0.3s ease;
     }
     #intro button:hover { background-color: rgb(45, 173, 128); }
@@ -44,59 +38,60 @@
       position: fixed; top: 0; width: 100%;
       background-color: rgb(69, 143, 147);
       border-bottom: 2px solid rgb(108, 93, 50);
-      display: flex; align-items: center;
-      justify-content: center; flex-direction: column;
-      padding: 10px 0;
-      transform: translateY(-100%); opacity: 0;
-      transition: all 0.8s ease; z-index: 999;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+      padding: 10px 0; transform: translateY(-100%); opacity: 0; transition: all 0.8s ease; z-index: 999;
     }
     nav.show { transform: translateY(0); opacity: 1; }
     nav img { width: 150px; height: auto; }
 
-    /* ===== Main Content ===== */
+    /* ===== Main ===== */
     main {
-      opacity: 0; transform: translateY(50px);
-      transition: all 0.8s ease;
-      padding-top: 180px;
-      display: flex; justify-content: center; align-items: center;
-      min-height: 100vh;
+      opacity: 0; transform: translateY(50px); transition: all 0.8s ease;
+      display: flex; flex-direction: column; align-items: center;
+      padding-top: 180px; min-height: 100vh;
+      gap: 40px; /* ช่องว่างระหว่างส่วนต่างๆ */
     }
     main.show { opacity: 1; transform: translateY(0); }
 
+    .map-container {
+      display: flex; justify-content: center;
+      margin-bottom: 40px; /* เว้นระยะจากข้อความด้านบน */
+    }
+    .map-container img { max-width: 90%; height: auto; border-radius: 10px; }
+
     /* ===== Slider ร้าน ===== */
+    .slider-container {
+      position: relative; width: 90%; max-width: 1200px; margin: 0 auto;
+      padding: 30px 0;
+      margin-top: 40px; /* เว้นระยะจาก map-container */
+    }
     .slider {
-      display: flex; gap: 40px;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      scroll-behavior: smooth; width: 90%; max-width: 1200px;
-      margin: 0 auto; padding: 30px 0;
+      display: flex; gap: 40px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
     }
     .slider::-webkit-scrollbar { display: none; }
     .Wallpaper {
-      flex: 0 0 auto; width: 500px;
-      scroll-snap-align: center;
-      background-color: aliceblue;
-      padding: 30px; border: 2px solid #000;
-      border-radius: 10px;
+      flex: 0 0 auto; width: 500px; scroll-snap-align: center;
+      background-color: aliceblue; padding: 30px; border: 2px solid #000; border-radius: 10px;
+      margin-bottom: 40px; /* เว้นระยะระหว่างร้าน */
     }
     .Wallpaper h1 { text-align: center; font-size: 28px; margin-bottom: 10px; }
     .Wallpaper p { font-size: 16px; line-height: 1.6; margin: 5px 0; }
 
-    /* ===== Slider ภายในแต่ละร้าน ===== */
-    .cafe-images {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      margin: 10px 0;
-    }
+    /* ===== Slider ภายในร้าน ===== */
+    .cafe-images-container { position: relative; }
+    .cafe-images { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; margin: 10px 0; }
     .cafe-images::-webkit-scrollbar { display: none; }
-    .cafe-images img {
-      flex: 0 0 auto;
-      max-height: 300px;
-      border-radius: 8px;
-      scroll-snap-align: start;
+    .cafe-images img { flex: 0 0 auto; max-height: 300px; border-radius: 8px; scroll-snap-align: start; }
+
+    /* ===== ปุ่มเลื่อน ===== */
+    .prev, .next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.5); color: #fff; border: none;
+      padding: 10px 15px; cursor: pointer; border-radius: 50%; font-size: 18px;
+      z-index: 10;
     }
+    .prev { left: -20px; }
+    .next { right: -20px; }
 
     .footer-logo { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; }
     .footer-logo img { width: 40px; height: 40px; object-fit: contain; }
@@ -106,46 +101,19 @@
       background-color: rgb(96, 69, 19);
       padding: 1rem 0; text-align: center; margin-top: 40px;
     }
-    .map-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px; /* ระยะห่างจาก slider */
-    }
 
-    .map-container img {
-    max-width: 90%;
-    height: auto;
-    border-radius: 10px;
-    }
-
-    main {
-    display: flex;
-    flex-direction: column; /* ให้ map และ slider เรียงแนวตั้ง */
-    align-items: center;    /* จัดให้อยู่ตรงกลาง */
-    padding-top: 180px;     /* ระยะจาก top */
-    min-height: 100vh;
-    }
-
-
-    /* ===== สไตล์ลิงก์ชื่อครีเอเตอร์ ===== */
-    .creator-link {
-      color: #FFD700; /* สีทอง */
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .creator-link:hover {
-      color: #FFA500; /* สีเมื่อ hover */
-    }
+    .creator-link { color: #FFD700; text-decoration: none; font-weight: bold; }
+    .creator-link:hover { color: #FFA500; }
 
     @media (max-width: 600px) {
       main { padding-top: 150px; }
-      .slider { padding: 20px; }
       .Wallpaper { width: 300px; }
       #intro img { width: 80%; }
     }
   </style>
 </head>
 <body>
+
   <!-- Intro -->
   <div id="intro">
     <img src="Logo_Final.png" alt="VI3W PROJECT logo" />
@@ -159,131 +127,210 @@
 
   <!-- Main Content -->
   <main id="content">
-      <div class="map-container">
-        <img src="map.png" alt="map">
+    <!-- ข้อความแนะนำ -->
+    <div class="Wallpaper"> 
+      <h1>VI3W PROJECT</h1> 
+      <p style="text-align:center; font-style: italic; color: gray;"> 
+        โปรเจกต์รีวิวสถานที่ แนะนำคาเฟ่และร้านอาหารรอบมหาวิทยาลัยศิลปากร เพชรบุรี
+      </p> 
+      <h2>แนะนำคาเฟ่และร้านอาหารหลังม.ศิลปากร เพชรบุรี</h2> 
+      <p>ในย่านหลังมหาวิทยาลัยศิลปากร วิทยาเขตเพชรบุรี มีคาเฟ่และร้านอาหารน่านั่งหลายแห่ง ไม่ว่าจะเป็นร้านกาแฟสุดชิล ร้านอาหารไทยฟิวชัน หรือร้านขนมเล็กๆ ที่ซ่อนความอร่อยไว้ วันนี้ VI3W PROJECT จะพาไปชมกัน!</p>
     </div>
-    
-    <div class="slider" id="cafe-slider">
-      <!-- ร้าน 1 -->
-      <div class="Wallpaper">
-        <h1>Better Corner Cafe</h1>
-        <p style="text-align:center; font-style: italic; color: rgb(128, 128, 128);">
-          คาเฟ่โทนอบอุ่น บรรยากาศบ้าน ๆ ใกล้ม.ศิลปากร
-        </p>
-        <div class="cafe-images">
-          <img src="IMG_20251005_141400.jpg" alt="Better Corner Cafe">
-          <img src="better1.jpg" alt="Better Corner Cafe 2">
-          <img src="better2.jpg" alt="Better Corner Cafe 2">
-          <img src="better3.jpg" alt="Better Corner Cafe 2">
-          <img src="better4.jpg" alt="Better Corner Cafe 2">
-          <img src="better5.jpg" alt="Better Corner Cafe 2">
-          <img src="better6.jpg" alt="Better Corner Cafe 2">
-        </div>
-        <p><strong>📍 ร้าน:</strong> Better Corner Cafe</p>
-        <p><strong>☕ เมนูแนะนำ:</strong> ไข่ข้นกุ้ง, ชาเลม่อน, บราวนี่</p>
-        <p><strong>🕒 เวลาเปิด:</strong> ทุกวัน 9:30 - 21:00</p>
-        <div class="footer-logo">
-          <a href="https://www.instagram.com/bettercornercafe_inmyhouse/">
-            <img src="IG_brown.png" alt="Instagram Logo" />
-          </a>
-          <a href="https://www.facebook.com/p/Better-corner-cafe-in-my-house-100063505355076/?locale=th_TH">
-            <img src="Facebook_brown.png" alt="Facebook Logo" />
-          </a>
-        </div>
-      </div>
 
-      <!-- ร้าน 2 -->
-      <div class="Wallpaper">
-        <h1>Bankare</h1>
-        <p style="text-align:center; font-style: italic; color: rgb(128, 128, 128);">
-          ร้านอาหารญี่ปุ่นและราเม็งอร่อยๆ
-        </p>
-        <div class="cafe-images">
-          <img src="บังคาเร.jpg" alt="Bankare">
-          <img src="bankare1.jpg" alt="Bankare ">
-          <img src="bankare2.jpg" alt="Bankare ">
-          <img src="bankare3.jpg" alt="Bankare ">
-          <img src="bankare4.jpg" alt="Bankare ">
-          <img src="bankare5.jpg" alt="Bankare ">
-          <img src="bankare6.jpg" alt="Bankare ">
-          <img src="bankare7.jpg" alt="Bankare ">
-          <img src="bankare8.jpg" alt="Bankare ">
-          <img src="bankare9.jpg" alt="Bankare ">
-        </div>
-        <p><strong>📍 ร้าน:</strong> Bankare</p>
-        <p><strong>☕ เมนูแนะนำ:</strong> ทงคตสึราเม็ง,ข้าวแกงกะหรี่ </p>
-        <p><strong>🕒 เวลาเปิด:</strong>  วันจันทร์ - อาทิตย์ เวลา 10.00 - 21.00 น. (หยุดวันเสาร์)</p>
-        <div class="footer-logo">
-          <a href="https://www.instagram.com/bungkare8/">
-            <img src="IG_brown.png" alt="Instagram Logo" />
-          </a>
-          <a href="https://www.facebook.com/p/%E0%B8%9A%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B9%80%E0%B8%A3-Bungkare-100057293597164/">
-            <img src="Facebook_brown.png" alt="Facebook Logo" />
-          </a>
-        </div>
-      </div>
+    <!-- แผนที่ -->
+    <div class="map-container">
+      <img src="map.png" alt="map">
+    </div>
 
-      <!-- ร้าน 3 -->
-      <div class="Wallpaper">
-        <h1>Private Cafe'</h1>
-        <p style="text-align:center; font-style: italic; color: rgb(128, 128, 128);">
-          คาเฟ่แคมป์ปิ้ง บรรยากาศธรรมชาติ  เหมาะกับการนั่งพักผ่อน
-        </p>
-        <div class="cafe-images">
-          <img src="private cafe.jpg" alt="Private Cafe'">
-          <img src="private cafe2.jpg" alt="Private Cafe'">
-          <img src="private cafe3.jpg" alt="Private Cafe'">
-          <img src="private cafe4.jpg" alt="Private Cafe'">
-          <img src="private cafe5.jpg" alt="Private Cafe'">
+    <!-- Slider ร้าน -->
+    <div class="slider-container">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+
+      <div class="slider" id="cafe-slider">
+        <!-- ร้าน 1 -->
+        <div class="Wallpaper">
+          <h1>Better Corner Cafe</h1>
+          <p style="text-align:center; font-style: italic; color: gray;">คาเฟ่โทนอบอุ่น บรรยากาศบ้าน ๆ ใกล้ม.ศิลปากร</p>
+          <div class="cafe-images-container">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="cafe-images">
+              <img src="IMG_20251005_141400.jpg" alt="Better Corner Cafe">
+              <img src="better1.jpg" alt="Better Corner Cafe 2">
+              <img src="better2.jpg" alt="Better Corner Cafe 3">
+              <img src="better3.jpg" alt="Better Corner Cafe 4">
+              <img src="better4.jpg" alt="Better Corner Cafe 5">
+            </div>
+          </div>
+          <p><strong>📍 ร้าน:</strong> Better Corner Cafe</p>
+          <p><strong>☕ เมนูแนะนำ:</strong> ไข่ข้นกุ้ง, ชาเลม่อน, บราวนี่</p>
+          <p><strong>🕒 เวลาเปิด:</strong> ทุกวัน 9:30 - 21:00</p>
+          <div class="footer-logo">
+            <a href="https://www.instagram.com/bettercornercafe_inmyhouse/"><img src="IG_brown.png" alt="Instagram Logo" /></a>
+            <a href="https://www.facebook.com/p/Better-corner-cafe-in-my-house-100063505355076/?locale=th_TH"><img src="Facebook_brown.png" alt="Facebook Logo" /></a>
+            <a href="https://www.google.com/maps/place/BetterCorner+cafe/@12.6581598,99.8635826,17z/data=!3m1!4b1!4m6!3m5!1s0x30fcff3e57a1c095:0x7e94056665aed284!8m2!3d12.6581598!4d99.8635826!16s%2Fg%2F11fvzzh6v8?entry=ttu&g_ep=EgoyMDI1MTAxMi4wIKXMDSoASAFQAw%3D%3D"><img src="glass.png" alt="glass" /></a>
+          </div>
         </div>
-        <p><strong>📍 ร้าน:</strong> Private Cafe'</p>
-        <p><strong>🍰 เมนูแนะนำ:</strong> ครัวซองค์, ชาไทย,ชายดำ,อเมริกาโน่น้ำอ้อย</p>
-        <p><strong>🕒 เวลาเปิด:</strong> 9:00-5:00</p>
+
+        <!-- ร้าน 2 -->
+        <div class="Wallpaper">
+          <h1>Bankare</h1>
+          <p style="text-align:center; font-style: italic; color: gray;">ร้านอาหารญี่ปุ่นและราเม็งอร่อยๆ</p>
+          <div class="cafe-images-container">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="cafe-images">
+              <img src="bankare1.jpg" alt="Bankare 1">
+              <img src="bankare2.jpg" alt="Bankare 2">
+              <img src="bankare3.jpg" alt="Bankare 3">
+            </div>
+          </div>
+          <p><strong>📍 ร้าน:</strong> Bankare</p>
+          <p><strong>☕ เมนูแนะนำ:</strong> ทงคตสึราเม็ง, ข้าวแกงกะหรี่</p>
+          <p><strong>🕒 เวลาเปิด:</strong> จันทร์-อาทิตย์ 10:00-21:00 (หยุดวันเสาร์)</p>
+          <div class="footer-logo">
+            <a href="https://www.instagram.com/bungkare8/"><img src="IG_brown.png" alt="Instagram Logo" /></a>
+            <a href="https://www.facebook.com/p/%E0%B8%9A%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B9%80%E0%B8%A3-Bungkare-100057293597164/"><img src="Facebook_brown.png" alt="Facebook Logo" /></a>
+            <a href="https://www.google.com/maps/place/Bung-kare+%E0%B8%9A%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B9%80%E0%B8%A3/@12.6565858,99.8629194,17z/data=!3m1!4b1!4m6!3m5!1s0x30fd2113dedb6ec5:0x99fe94a71b2bc630!8m2!3d12.6565858!4d99.8629194!16s%2Fg%2F11t5_4mgyw?entry=ttu&g_ep=EgoyMDI1MTAxMi4wIKXMDSoASAFQAw%3D%3D"><img src="glass.png" alt="glass" /></a>
+          </div>
+        </div>
+        <!-- ร้าน 3 -->
+        <div class="Wallpaper">
+          <h1>Private Cafe'</h1>
+          <p style="text-align:center; font-style: italic; color: gray;">คาเฟ่แคมป์ปิ้ง บรรยากาศธรรมชาติ เหมาะกับการนั่งพักผ่อน</p>
+          <div class="cafe-images-container">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="cafe-images">
+              <img src="private cafe.jpg" alt="Private Cafe 1">
+              <img src="private cafe2.jpg" alt="Private Cafe 2">
+              <img src="private cafe3.jpg" alt="Private Cafe 3">
+              <img src="private cafe4.jpg" alt="Private Cafe 4">
+              <img src="private cafe5.jpg" alt="Private Cafe 5">
+            </div>
+          </div>
+          <p><strong>📍 ร้าน:</strong> Private Cafe'</p>
+          <p><strong>🍰 เมนูแนะนำ:</strong> ครัวซองค์, ชาไทย,ชายดำ,อเมริกาโน่น้ำอ้อย</p>
+          <p><strong>🕒 เวลาเปิด:</strong> 9:00-5:00</p>
             <div class="footer-logo">
-            <a href="https://www.facebook.com/profile.php?id=100076234935533&sk=photos">
-                <img src="Facebook_brown.png" alt="Facebook Logo" />
-            </a>
+              <a href="https://www.facebook.com/profile.php?id=100076234935533&sk=photos">
+                  <img src="Facebook_brown.png" alt="Facebook Logo" />
+              </a>
+               <a href="https://www.google.com/maps/place/Private+Cafe'/@12.6675024,99.8710442,17z/data=!3m1!4b1!4m6!3m5!1s0x30fcff51d34d9b51:0xd0ebe096ae3b5bfa!8m2!3d12.6675024!4d99.8736191!16s%2Fg%2F11rd26v9wz?entry=ttu&g_ep=EgoyMDI1MTAxMi4wIKXMDSoASAFQAw%3D%3D">
+                      <img src="glass.png" alt="glass" />
+                  </a>
             </div>
         </div>
-      <div class="Wallpaper">
-        <h1>282 Cook & Brew</h1>
-        <p style="text-align:center; font-style: italic; color: rgb(128, 128, 128);">
-          ร้านอาหารบรรยากาศธรรมชาติ 
-        </p>
-        <div class="cafe-images">
-          <img src="282 Cook & Brew1.JPG" alt="282 Cook & Brew">
-          <img src="282 Cook & Brew2.JPG" alt="282 Cook & Brew">
-          <img src="282 Cook & Brew3.JPG" alt="282 Cook & Brew">
-          <img src="282 Cook & Brew4.JPG" alt="282 Cook & Brew">
-          <img src="282 Cook & Brew5.JPG" alt="282 Cook & Brew">
-          <img src="282 Cook & Brew6.JPG" alt="282 Cook & Brew">
-          <img src="Cook & Brew7.jpg" alt="282 Cook & Brew">
-        </div>
-        <p><strong>📍 ร้าน:</strong> 282 Cook & Brew</p>
-        <p><strong>🍰 เมนูแนะนำ:</strong> ข้าวผัด, ข้าวไข่เจียว,กีวี่ปั่น,นมชมพู</p>
-        <p><strong>🕒 เวลาเปิด:</strong> 8:00-18:00</p>
-            <div class="footer-logo">
-            
-                <a href="https://www.facebook.com/282cookandbrew/photos?locale=th_TH">
-                    <img src="Facebook_brown.png" alt="Facebook Logo" />
-                </a>
+
+        <!-- ร้าน 4 -->
+        <div class="Wallpaper">
+          <h1>282 Cook & Brew</h1>
+          <p style="text-align:center; font-style: italic; color: gray;">ร้านอาหารบรรยากาศธรรมชาติ</p>
+          <div class="cafe-images-container">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="cafe-images">
+              <img src="282 Cook & Brew1.JPG" alt="282 Cook & Brew 1">
+              <img src="282 Cook & Brew2.JPG" alt="282 Cook & Brew 2">
+              <img src="282 Cook & Brew3.JPG" alt="282 Cook & Brew 3">
+              <img src="282 Cook & Brew4.JPG" alt="282 Cook & Brew 4">
+              <img src="282 Cook & Brew5.JPG" alt="282 Cook & Brew 5">
+              <img src="282 Cook & Brew6.JPG" alt="282 Cook & Brew 6">
+              <img src="Cook & Brew7.jpg" alt="282 Cook & Brew 7">             
             </div>
+          </div>
+          <p><strong>📍 ร้าน:</strong> 282 Cook & Brew</p>
+          <p><strong>🍰 เมนูแนะนำ:</strong> ข้าวผัด, ข้าวไข่เจียว,กีวี่ปั่น,นมชมพู</p>
+          <p><strong>🕒 เวลาเปิด:</strong> 8:00-18:00</p>
+              <div class="footer-logo">
+              
+                  <a href="https://www.facebook.com/282cookandbrew/photos?locale=th_TH">
+                      <img src="Facebook_brown.png" alt="Facebook Logo" />
+                  </a>
+                  <a href="https://www.google.com/maps/place/282+Cook+%26+Brew/data=!4m2!3m1!1s0x0:0x38b3878b00012196?sa=X&ved=1t:2428&ictx=111">
+                      <img src="glass.png" alt="glass" />
+                  </a>
+              </div>
         </div>
+
+        <div class="Wallpaper">
+          <h1>Greett Cafe</h1>
+          <p style="text-align:center; font-style: italic; color: gray;">คาเฟ่บรรยากาศชิวๆหลังหอพัก</p>
+          <div class="cafe-images-container">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="cafe-images">
+              <img src="greet cafe6.webp" alt="greet cafe 6">           
+              <img src="greet cafe1.jpg" alt="greet cafe 1">           
+              <img src="greet cafe2.jpg" alt="greet cafe 2">           
+              <img src="greet cafe3.jpg" alt="greet cafe 3">           
+              <img src="greet cafe4.jpg" alt="greet cafe 4">           
+              <img src="greet cafe5.jpg" alt="greet cafe 5">           
+            </div>
+          </div>
+          <p><strong>📍 ร้าน:</strong> Greett Cafe</p>
+          <p><strong>🍰 เมนูแนะนำ:</strong> ปังเย็น,มาม่าเกาหลีหม้อไฟ</p>
+          <p><strong>🕒 เวลาเปิด:</strong> 14:00-00:00</p>
+              <div class="footer-logo">
+                  <a href="https://www.facebook.com/profile.php?id=61570424481539&sk=reels_tab">
+                      <img src="Facebook_brown.png" alt="Facebook Logo" />
+                  </a>
+                  <a href="https://www.instagram.com/greett.cafe/">
+                    <img src="IG_brown.png" alt="Instagram">
+                  </a>
+                  <a href="https://www.google.com/maps/search/greet+cafe+%E0%B9%80%E0%B8%9E%E0%B8%8A%E0%B8%A3%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5/@12.6436579,99.882297,9z?entry=ttu&g_ep=EgoyMDI1MTAxMi4wIKXMDSoASAFQAw%3D%3D">
+                      <img src="glass.png" alt="glass" />
+                  </a>
+              </div>
+        </div>
+
+        <div class="Wallpaper">
+          <h1>So Chill Cha cafe</h1>
+          <p style="text-align:center; font-style: italic; color: gray;">คาเฟ่บรรยากาศชิวๆหลังหอพัก</p>
+          <div class="cafe-images-container">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="cafe-images">
+              <img src="So Chill Cha cafe8.webp" alt="So Chill Cha cafe 8">  
+              <img src="So Chill Cha cafe.jpg" alt="So Chill Cha cafe 1">           
+              <img src="So Chill Cha cafe2.jpg" alt="So Chill Cha cafe 2">           
+              <img src="So Chill Cha cafe3.jpg" alt="So Chill Cha cafee 3">           
+              <img src="So Chill Cha cafe4.jpg" alt="So Chill Cha cafee 4">           
+              <img src="So Chill Cha cafe5.jpg" alt="So Chill Cha cafe 5">           
+              <img src="So Chill Cha cafe6.jpg" alt="So Chill Cha cafe 6">           
+              <img src="So Chill Cha cafe7.jpg" alt="So Chill Cha cafe 7">                                  
+            </div>
+          </div>
+          <p><strong>📍 ร้าน:</strong> So Chill Cha cafe</p>
+          <p><strong>🍰 เมนูแนะนำ:</strong>ชาเขียว,บิงซู </p>
+          <p><strong>🕒 เวลาเปิด:</strong> 10:30-21:00</p>
+              <div class="footer-logo">
+              
+                  <a href="https://www.facebook.com/So.Chill.Cha/">
+                      <img src="Facebook_brown.png" alt="Facebook Logo" />
+                  </a>
+                  <a href="https://www.google.com/maps/place/So+Chill+Cha+cafe/data=!4m2!3m1!1s0x0:0x48f67321a31ef28?sa=X&ved=1t:2428&ictx=111">
+                      <img src="glass.png" alt="glass" />
+                  </a>
+              </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </main>
+        <!-- ร้านอื่นๆ สามารถเพิ่มตามโครงสร้างนี้ -->
+      </div>
     </div>
   </main>
 
   <footer>
     <p>Creator <a href="#" class="creator-link">Kittipob & Phudid</a></p>
-    <div class="footer-logo">
-      <a href="http://www.youtube.com/@VI3WPROJECT">
-        <img src="youtube logo.png" alt="YouTube Logo" />
-      </a>
-      <a href="https://www.instagram.com/vi3w_project/">
-        <img src="IG_white.png" alt="Instagram Logo" />
-      </a>
-      <a href="https://x.com/Vi3wP46414">
-        <img src="X-Logo-Twitter-Logo-Iconic.png" alt="Twitter Logo" />
-      </a>
+    <div class="footer-logo">          
+      <a href="https://www.youtube.com/@VI3WPROJECT"><img src="youtube logo.png" alt="Facebook Logo" /></a>
+      <a href="https://www.instagram.com/vi3w_project/?__pwa=1"><img src="IG_white.png" alt="glass" /></a>
+      <a href="https://x.com/Vi3wP46414"><img src="X-Logo-Twitter-Logo-Iconic.png" alt="glass" /></a>
     </div>
   </footer>
 
@@ -300,14 +347,32 @@
       navbar.classList.add('show');
       main.classList.add('show');
       document.body.style.backgroundColor = "#c9b8a8";
-
-      // เลื่อนร้านแรกไปกลางหน้าจอ
       const slider = document.getElementById('cafe-slider');
       const firstStore = slider.querySelector('.Wallpaper');
       if(firstStore){
         const offset = firstStore.offsetLeft - (slider.clientWidth/2 - firstStore.clientWidth/2);
         slider.scrollLeft = offset;
       }
+    });
+
+    // ฟังก์ชันเลื่อนร้าน
+    const slider = document.getElementById('cafe-slider');
+    document.querySelectorAll('.slider-container .prev')[0].addEventListener('click', () => {
+      slider.scrollBy({left: -520, behavior: 'smooth'});
+    });
+    document.querySelectorAll('.slider-container .next')[0].addEventListener('click', () => {
+      slider.scrollBy({left: 520, behavior: 'smooth'});
+    });
+
+    // ฟังก์ชันเลื่อนรูปแต่ละร้าน
+    document.querySelectorAll('.cafe-images-container').forEach(container => {
+      const imgs = container.querySelector('.cafe-images');
+      container.querySelector('.prev').addEventListener('click', () => {
+        imgs.scrollBy({left: -300, behavior: 'smooth'});
+      });
+      container.querySelector('.next').addEventListener('click', () => {
+        imgs.scrollBy({left: 300, behavior: 'smooth'});
+      });
     });
   </script>
 </body>
